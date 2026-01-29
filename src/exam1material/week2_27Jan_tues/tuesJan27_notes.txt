@@ -89,12 +89,12 @@ Order of operations
 
 
     ∧ and ∨ evaluate left to right
-        p ∧ q ∧ r is equivalent to....
-        p ∨ q ∨ r is equivalent to....
+        p ∧ q ∧ r is equivalent to.... (p ^ q) ^ r
+        p ∨ q ∨ r is equivalent to....(p V q) V r
 
 
     → evaluates right to left
-        p → q → r is equivalent to....
+        p → q → r is equivalent to.... p imples (q implies r)
 
 
 
@@ -108,16 +108,17 @@ Top-level operator (what happens LAST?)
 ¬p ∨ q ∧ r
 
 
-top-level? 
+top-level? V
+Has the lowest precedence
 
 
-How is this similar to a circuit? 
+How is this similar to a circuit? THe last one (often on the right), its output is the output of the whole circuit
 
 
 
 ///////////////////////////////
 
-p ∧ q ∨ r ∧ p
+(p ∧ q) ∨ (r ∧ p)
 
 rewrite with ():
 
@@ -131,7 +132,7 @@ top-level operator?
 p ∧ q ∧ r ∧ s
 
 rewrite with ():
-
+((p ^ q) ^ r) ^ s
 
 top-level operator?  
 
@@ -153,6 +154,7 @@ parse trees
 
 --> draw one for p ∨ q ∧ r → ¬p → ¬q ∨ s
 
+implies precede right to left 
 
 
 
@@ -175,6 +177,11 @@ If we have 2 variables, how many possible truth assignments?
 
     p, q
 
+4
+TT 
+FF
+TF 
+FT 
 
 
 
@@ -182,13 +189,13 @@ If we have 2 variables, how many possible truth assignments?
 If we have 3 variables, how many possible truth assignments?
 
     p, q, r
-
+8
 
 
 If we have n variables, how many possible truth assignments?
 
 
-
+2^n
 
 
 
@@ -202,20 +209,20 @@ Contingent, contradictory, tautology
 
 
 
-contingent: 
+contingent: mix of true and false statement
 
-    Example? 
-
-
-
-contradictory:
-
-    Example? 
+    Example? p V q
 
 
-tautology:
 
-    Example? 
+contradictory:always false
+
+    Example? ~p ^ p
+
+
+tautology: always true
+
+    Example? ~p V p 
     
 
 ///////////////////////////////////////////
@@ -231,13 +238,20 @@ Write a truth table for:
 
 (p ∧ r) → (r ∨ ¬q)
 
-
+                *
 -----------------------------
 p q r  #  (p ∧ r) → (r ∨ ¬q)
 -----------------------------
+T T T #      T    T    T   F
+F F F #      F    T    F   F      
+T F T #      T    T    T   T  
+T F F #      F    T    T    T  
+F T T #      F    T    T  F  
+F T F #      F    T    F  F  
+F F T #      F    T    T   T
+F F F #      F    T    T   T  
 
-
-
+Tautology
 
 --> top-level operator?
 
