@@ -152,16 +152,18 @@ show that they have the same output for each truth statement
 //////////////////////////////////
 
 Consider these two statements:
-
+p: I am at least 16 years old
+q: I can drive a car
 1) If I am at least 16 years old, then I can drive a car.
-
+p implies q
 2) If I can drive a car, then I am at least 16 years old.
-
+q implies p
 
 --> are they saying the same thing?
-
+No
 --> could we PROVE our answer?
-
+it is enough to find one truth assignment where the  two statements hace different output
+p = F, q = T
 
 //////////////////////////////////
 
@@ -180,8 +182,12 @@ if (a == 4 || a == 5) {
 How could we express the NEGATION
 (i.e., what condition would be true for the "else")?
 
+if (!(a == 4 || a == 5))
 
-
+negate an or: negate both sides. flip to and
+if (a !=4 && a!=5) {
+    statements
+}
 
 
 ///
@@ -192,7 +198,7 @@ if (a == 4 && b == 5) {
 
 How could we express the NEGATION
 (i.e., what condition would be true for the "else")?
-
+if (a !=4 || b!=5)
 
 
 
@@ -202,11 +208,11 @@ How could we express the NEGATION
 
 DeMorgan's laws in propositional logic:
 
-¬(p ∨ q) is equivalent to... 
-
+¬(p ∨ q) is equivalent to... not p and not q
+They are logically equivalent
 ¬(p ∧ q) is equivalent to...
 
-
+ not p or not q
 --> how can we prove the first of DeMorgan's laws?
 
 
@@ -224,7 +230,7 @@ if (Character.isDigit(letter) || num < 10) {
 
 --> how would we negate it without using a ! operator?
     also no extra ()
-
+if (Character.isDigit(letter) == && num >= 10)
 
 
 
@@ -237,7 +243,7 @@ if ((y >= 4 || num != 14) && x > 0) {
     statements
 }
 
-
+if ((y<4 && num == 14) || x <=0)
 
 
 ///////////////////////
