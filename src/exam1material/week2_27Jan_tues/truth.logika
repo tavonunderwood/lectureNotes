@@ -9,7 +9,11 @@ T T #    T F   T      T
 T F #    T T   F      F
 F T #    F F   T      F
 F F #    T T   F      F
+<<<<<<< HEAD
 ---------------------------
+=======
+----------------------------
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
 Contingent
 T: [T T] [F T]
 F: [T F] [F F]

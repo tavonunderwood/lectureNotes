@@ -4,8 +4,13 @@ Homework 1 due tonight
         You know the thief was either Agatha, Ferdinand, or Carl.
             (some statements)
         You later learn that Carl and Ferdinand were not both telling the truth.
+            NOT possible: Carl telling truth, Ferdinand telling truth
+            ANYTHING ELSE is possible
 
-    What are the possible cases?
+
+    What are the possible cases? 3 cases. Each could be the thief.
+
+
     How to check if a possible case works?
 
 
@@ -39,35 +44,27 @@ When is this true? When is this false?
 
 p q  #  p → q
 --------------
-T T  #    
-T F  #    
-F T  #    
-F F  #    
+T T  #    T
+T F  #    F
+F T  #    T
+F F  #    T
 
 //////////////////////////////////////
-
-Evaluating logical statements.
-
-Basic operations:
-
-∧ - 
-∨ - 
-¬ - 
-→ - 
-
-////////////////////////////////////////
 
 Consider ¬p ∨ q → p ∧ ¬q
 
 --> what operation do we do first?
 
-
+¬ (highest precedence)
+∧
+∨
+→ (lowest precedence)
 
 
 Add () to show the order of operations.
 
 
-
+((¬p) ∨ q) → (p ∧ (¬q))
 
 
 Evaluate the above statement using these
@@ -75,26 +72,43 @@ variable assignments:
 
 p is T
 q is F
-r is F
+
+
+((¬T) ∨ F) → (T ∧ (¬F))
+((F) ∨ F) → (T ∧ (T))
+(F) → (T)
+T (output)
 
 
 
+4 - 2 - 5
+left to right
+(4-2) - 5
 
 
 ////////////////////////////////////////////////
 
 Order of operations
     ¬ evaluates right to left
-        ¬¬p is equivalent to....
+        ¬¬p is equivalent to....¬(¬p)
 
 
     ∧ and ∨ evaluate left to right
+<<<<<<< HEAD
         p ∧ q ∧ r is equivalent to.... (p ^ q) ^ r
         p ∨ q ∨ r is equivalent to....(p V q) V r
 
 
     → evaluates right to left
         p → q → r is equivalent to.... p imples (q implies r)
+=======
+        p ∧ q ∧ r is equivalent to....(p ∧ q) ∧ r
+        p ∨ q ∨ r is equivalent to....(p ∨ q) ∨ r
+
+
+    → evaluates right to left
+        p → q → r is equivalent to....p → (q → r)
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
 
 
 
@@ -103,16 +117,26 @@ Order of operations
 //////////////////////////////////////////
 
 Top-level operator (what happens LAST?)
+has the LOWEST precedence
+
 
 
 ¬p ∨ q ∧ r
 
 
+<<<<<<< HEAD
 top-level? V
 Has the lowest precedence
 
 
 How is this similar to a circuit? THe last one (often on the right), its output is the output of the whole circuit
+=======
+top-level? ∨
+
+
+How is this similar to a circuit? the last one (often on the right)
+its output is the output of the whole circuit
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
 
 
 
@@ -122,8 +146,10 @@ How is this similar to a circuit? THe last one (often on the right), its output 
 
 rewrite with ():
 
+(p ∧ q) ∨ (r ∧ p)
 
-top-level operator? 
+
+top-level operator? ∨
 
 
 
@@ -132,9 +158,15 @@ top-level operator?
 p ∧ q ∧ r ∧ s
 
 rewrite with ():
+<<<<<<< HEAD
 ((p ^ q) ^ r) ^ s
+=======
 
-top-level operator?  
+((p ∧ q) ∧ r) ∧ s
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
+
+
+top-level operator?  rightmost ∧
 
 
 ////////////////////////////////////////////////////
@@ -178,11 +210,18 @@ If we have 2 variables, how many possible truth assignments?
     p, q
 
 4
+<<<<<<< HEAD
 TT 
 FF
 TF 
 FT 
 
+=======
+T T 
+T F 
+F T 
+F F
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
 
 
 
@@ -191,11 +230,18 @@ If we have 3 variables, how many possible truth assignments?
     p, q, r
 8
 
+8
+
 
 If we have n variables, how many possible truth assignments?
 
+<<<<<<< HEAD
 
 2^n
+=======
+2^n 
+
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
 
 
 
@@ -209,6 +255,7 @@ Contingent, contradictory, tautology
 
 
 
+<<<<<<< HEAD
 contingent: mix of true and false statement
 
     Example? p V q
@@ -218,11 +265,27 @@ contingent: mix of true and false statement
 contradictory:always false
 
     Example? ~p ^ p
+=======
+contingent: mix of true and false output
+
+    Example? p ∨ q 
+    p 
+
+
+
+contradictory: always false
+
+    Example? ¬p ∧ p
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
 
 
 tautology: always true
 
+<<<<<<< HEAD
     Example? ~p V p 
+=======
+    Example? ¬p ∨ p 
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
     
 
 ///////////////////////////////////////////
@@ -238,6 +301,7 @@ Write a truth table for:
 
 (p ∧ r) → (r ∨ ¬q)
 
+<<<<<<< HEAD
                 *
 -----------------------------
 p q r  #  (p ∧ r) → (r ∨ ¬q)
@@ -252,6 +316,24 @@ F F T #      F    T    T   T
 F F F #      F    T    T   T  
 
 Tautology
+=======
+                  *
+-----------------------------
+p q r  #  (p ∧ r) → (r ∨ ¬q)
+-----------------------------
+T T T #      T    T    T F
+T T F #      F    T    F F
+T F T #      T    T    T T
+T F F #      F    T    T T
+F T T #      F    T    T F
+F T F #      F    T    F F
+F F T #      F    T    T T
+F F F #      F    T    T T
+------------------------------
+
+Tautology
+
+>>>>>>> b7bc5251f0d0b73eac8c718349d4ffa946fb130e
 
 --> top-level operator?
 
@@ -288,7 +370,7 @@ Propositional logic.
 
 - a set of propositional atoms (statements that can be T/F)
     --> these will be our boolean variables in logic statements
-
+    --> must be as simple as possible
 
 
 - connected by logical operators
@@ -299,27 +381,31 @@ Propositional logic.
     that can be true or false
 
 
+p: I go to class
+
+¬p
+
 
 ////////////////////////////////////////
 
 Which ones are propositions?
 
-Today is Thursday.
+Today is Thursday. yes
 
 
-What time is it?
+What time is it? no
 
 
-x == 2
+x == 2 yes
 
 
-Pigs can fly.
+Pigs can fly. yes
 
 
-Drive carefully.
+Drive carefully. no
 
 
-y <= 4
+y <= 4 yes
 
 
 
@@ -338,21 +424,26 @@ Suppose we have these propositional atoms:
 
 How would we express these as English sentences?
 
-    ¬p:
+    ¬p: It is not below freezing
 
 
-    p ∧ q:
+    p ∧ q: It's below freezing and it's snowing
 
 
-    p → q :
+    p → q : If it is below freezing, then it is snowing
+        p = F
+        q = T
+        outputs true
 
+    ¬p → ¬q: If it is not below freezing, then it is not snowing
+        p = F
+        q = T 
+        outputs false
+        not equivalent
 
-    ¬p → ¬q:
+    r ∨ s: y <= 4 || x == 2
 
-
-    r ∨ s:
-
-    ¬r:
+    ¬r: y > 4
 
 ////////////////////////
 
